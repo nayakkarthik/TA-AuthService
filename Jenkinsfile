@@ -4,10 +4,7 @@ pipeline {
         maven 'mvn-3.9.11'  // Configure in Global Tool Config
         jdk 'jdk-21'
     }
-    environment {
-        JAVA_HOME = '/opt/java/openjdk'   // adjust after checking
-        PATH = "${JAVA_HOME}/bin:${PATH}"
-    }
+      
     stages {
         stage('Check Java') {
             steps {
@@ -23,8 +20,9 @@ pipeline {
         stage('Docker Build & Run') {
             steps {
                 script {
-                    def image = docker.build("authservice:${env.BUILD_NUMBER}")
+            
                     sh """
+                        docker build -t authservice:${BUILD_NUMBER} .
                         docker stop authservice || true
                         docker rm authservice || true
                         docker run -d --name authservice -p 8081:8080 authservice:${env.BUILD_NUMBER}
