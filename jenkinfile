@@ -2,9 +2,14 @@ pipeline {
     agent any
     tools {
         maven 'mvn-3.9.11'  // Configure in Global Tool Config
-        jdk 'jdk-17'
+        jdk 'jdk-21'
     }
     stages {
+        stage('Check Java') {
+            steps {
+                sh 'java -version'
+            }
+        }
         stage('Checkout') { steps { checkout scm } }
         stage('Build') {
             steps {
