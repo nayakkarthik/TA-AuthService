@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven3'  // Configure in Global Tool Config
+        jdk 'JDK17'
+    }
+    stages {
+        stage('Checkout') { steps { checkout scm } }
+        stage('Build') {
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        }
+        stage('Docker Build & Run') {
+            steps {
+                script {
+                    def image = docker.build("authservice:${env.BUILD_NUMBER}")
+                    sh """
+                        docker stop authservice || true
+                        docker rm authservice || true
+                        docker run -d --name authservice -p 8081:8080 authservice:${env.BUILD_NUMBER}
+                    """
+                }
+            }
+        }
+    }
+}
