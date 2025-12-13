@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        maven 'Maven3'  // Configure in Global Tool Config
-        jdk 'JDK17'
+        maven 'mvn-3.9.11'  // Configure in Global Tool Config
+        jdk 'jdk-17'
     }
     stages {
         stage('Checkout') { steps { checkout scm } }
