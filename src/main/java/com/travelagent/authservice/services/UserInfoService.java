@@ -28,8 +28,4 @@ public class UserInfoService {
     public void UpdateUser(UserInfoDto userInfoDto) {
 
     }
-
-    public UserInfoDto GetUserByUserName(String userName) {
-        return new UserInfoDto();
-    }
 }
