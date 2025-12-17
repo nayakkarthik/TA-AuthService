@@ -1,4 +1,4 @@
-package com.travelagent.authservice.authservice;
+package com.travelagent.authservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

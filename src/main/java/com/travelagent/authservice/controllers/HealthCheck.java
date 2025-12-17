@@ -1,4 +1,4 @@
-package com.travelagent.authservice.authservice;
+package com.travelagent.authservice.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

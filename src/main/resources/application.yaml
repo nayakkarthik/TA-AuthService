@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.0.102:5432/authdb
+    username: postgres
+    password: nayak@rth1
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect   
+    hibernate:
+      ddl-auto: update                                   
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  application:
+    name: authservice
+  security:
+    user:
+      name: admin
+      password: test 
+server:
+  port: 8081
