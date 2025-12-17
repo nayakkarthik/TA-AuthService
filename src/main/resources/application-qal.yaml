@@ -1,0 +1,7 @@
+spring:
+  config:
+    activate:
+      on-profile: qal
+
+  datasource:
+    url: jdbc:postgresql://192.168.0.102:5432/authdb

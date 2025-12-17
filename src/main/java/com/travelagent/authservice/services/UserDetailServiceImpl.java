@@ -1,7 +1,5 @@
 package com.travelagent.authservice.services;
 
-import javax.crypto.SecretKey;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.travelagent.authservice.entity.UserInfoEntity;
 import com.travelagent.authservice.repositories.UserInfoRepository;
-
-import io.jsonwebtoken.security.Keys;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {

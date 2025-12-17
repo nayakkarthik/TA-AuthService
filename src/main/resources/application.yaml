@@ -1,4 +1,8 @@
 spring:
+  application:
+    name: authservice
+  profiles: 
+    active: staging
   datasource:
     url: jdbc:postgresql://192.168.0.102:5432/authdb
     username: postgres
@@ -14,8 +18,7 @@ spring:
       hibernate:
         format_sql: true
 
-  application:
-    name: authservice
+
   security:
     user:
       name: admin
