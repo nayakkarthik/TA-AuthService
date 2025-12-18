@@ -25,7 +25,7 @@ pipeline {
                         docker build -t authservice:${BUILD_NUMBER} .
                         docker stop authservice || true
                         docker rm authservice || true
-                        docker run -d --name authservice -p 8081:8080 authservice:${env.BUILD_NUMBER}
+                        docker run -d --name authservice  --network ta_network -p 8081:8080 authservice:${env.BUILD_NUMBER}
                     """
                 }
             }

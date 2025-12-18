@@ -4,4 +4,4 @@ spring:
       on-profile: staging
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/authdb
+    url: jdbc:postgresql://postgres:5432/authdb
