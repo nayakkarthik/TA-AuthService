@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import javax.crypto.SecretKey;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,9 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
+    @Value("${spring.application.tokenExpiryTime}")
+    private long tokenExpiryTime;
+
     private static final String SECRET_KEY = "JWTFQ1Ux2P4Ke1D35xKhlxiA/NdA2yqRkXQW7ZGPy3N+sU=";
 
     public String getToken(UserDetails user) {
@@ -22,7 +26,7 @@ public class JwtUtil {
                 .claim("roles", user.getAuthorities())
                 .id(UUID.randomUUID().toString())
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + (5*1000 * 60))) // expires in 60 seconds.
+                .expiration(new Date(System.currentTimeMillis() + tokenExpiryTime)) // expires in 60 seconds.
                 .signWith(getSigningKey())
                 .compact();
     }
