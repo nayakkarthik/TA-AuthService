@@ -1,8 +1,12 @@
 spring:
-  application:
-    name: authservice
   profiles: 
     active: staging
+
+  application:
+    name: authservice
+    tokenExpiryTime: 300000
+
+# Postgres configuration
   datasource:
     url: jdbc:postgresql://192.168.0.102:5432/authdb
     username: postgres
@@ -17,11 +21,22 @@ spring:
     properties:
       hibernate:
         format_sql: true
+# END Postgres configuration
+#redis config
+  data:
+    redis:
+      host: 192.168.0.102
+      port: 6379
+      password: nayak@rth1
 
+#END redis config
 
   security:
     user:
       name: admin
       password: test 
+
+# This is main server configuration.
 server:
   port: 8081
+  
