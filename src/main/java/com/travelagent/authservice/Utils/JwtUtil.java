@@ -22,7 +22,7 @@ public class JwtUtil {
                 .claim("roles", user.getAuthorities())
                 .id(UUID.randomUUID().toString())
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis() + (5 * 60))) // expires in 60 seconds.
+                .expiration(new Date(System.currentTimeMillis() + (5*1000 * 60))) // expires in 60 seconds.
                 .signWith(getSigningKey())
                 .compact();
     }
