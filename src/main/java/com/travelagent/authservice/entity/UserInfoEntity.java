@@ -14,12 +14,9 @@ import lombok.Data;
 public class UserInfoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false,unique = true)
-    private String userName;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
+ 
     @Column(nullable = false,unique = true) 
     private String email;
 

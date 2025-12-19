@@ -1,6 +1,6 @@
 spring:
   profiles: 
-    active: staging
+    active: qal
 
   application:
     name: authservice

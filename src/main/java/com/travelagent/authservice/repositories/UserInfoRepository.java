@@ -10,6 +10,6 @@ import com.travelagent.authservice.entity.UserInfoEntity;
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfoEntity,Long> {
 
-    public Optional<UserInfoEntity> findByEmail(String email);
+    public Optional<UserInfoEntity> findOptionalByEmail(String email);
     
 }

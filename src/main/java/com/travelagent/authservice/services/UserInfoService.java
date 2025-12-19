@@ -19,13 +19,20 @@ public class UserInfoService {
     @Autowired
     private com.travelagent.authservice.Utils.UserMapper userMapper;
 
-    public void CreateUser(UserInfoDto user) {
+    public void createUser(UserInfoDto user) {
         user.setPassword(PasswordEncoder.encode(user.getPassword()));
         var userEntity = userMapper.toEntity(user);
-         userInfoRepository.save(userEntity);
-     }
+        userInfoRepository.save(userEntity);
+    }
 
-    public void UpdateUser(UserInfoDto userInfoDto) {
+    public UserInfoDto getUser(String email) {
+        var entity = userInfoRepository.findOptionalByEmail(email);
+        if (entity.isPresent())
+            return userMapper.toDto(entity.get());
+        else
+            return null;
+        
 
     }
+
 }

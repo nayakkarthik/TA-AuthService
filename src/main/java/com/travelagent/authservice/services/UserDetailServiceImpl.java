@@ -23,7 +23,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        UserInfoEntity userInfoEntity = userInfoRepository.findByEmail(email)
+        UserInfoEntity userInfoEntity = userInfoRepository.findOptionalByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(email));
         return User.builder()
                 .username(email)
@@ -33,7 +33,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
     public boolean ValidateCred(String emailId, String password) {
-        return userInfoRepository.findByEmail(emailId)
+        return userInfoRepository.findOptionalByEmail(emailId)
                 .filter(user -> passwordEncoder.matches(password, user.getPassword())).isPresent();
 
     }

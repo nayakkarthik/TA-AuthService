@@ -3,6 +3,7 @@ package com.travelagent.authservice.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.travelagent.authservice.dto.LoginResponse;
 import com.travelagent.authservice.dto.UserInfoDto;
 import com.travelagent.authservice.services.AuthService;
+
+import io.jsonwebtoken.Claims;
 
 @RestController
 @RequestMapping("/auth")
@@ -45,18 +48,17 @@ public class AuthController {
   }
 
   @PostMapping("/logout")
-  public void Logout() {
-    /*
-     * 1. jwt filter should validate the token.
-     * 2. refreshToken should be deleted
-     */
+  public void Logout(Authentication auth) {
 
-    // add jtid to redis with ttl. ttl should be expiry time of the token
+    authService.logout(auth.getCredentials().toString());
+    String body = "User %s has been logged out successfully".formatted(auth.getName());
   }
 
-  @PostMapping("/validate")
-  public void validate() {
-//to be designed.
+  @GetMapping("/validate")
+  public ResponseEntity<String> validate(Authentication auth) {
+
+    return ResponseEntity.ok("The user %s is authenticated".formatted(auth.getName()));
+    // to be designed.
   }
 
 }

@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class UserInfoDto {
-    private String userName;
         private String email;
         private String password;
         private String[] roles;
@@ -18,7 +17,6 @@ public class UserInfoDto {
         public Boolean isValid()
         {
             return email!=null&& !email.isBlank() && 
-                userName!=null&& !userName.isBlank() && 
                 password!=null&& !password.isBlank();
         }
 }

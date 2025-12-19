@@ -29,7 +29,7 @@ public class UserController {
             return ResponseEntity.badRequest().body("Pleas validate the data");
         }
         try {
-            userInfoService.CreateUser(userInfoDto);
+            userInfoService.createUser(userInfoDto);
         } catch (DataIntegrityViolationException ex) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMostSpecificCause().getMessage());
         }
