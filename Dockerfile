@@ -14,5 +14,9 @@ WORKDIR /app
 # Copy the built jar from the builder stage. If multiple jars exist, adjust to the exact name.
 # Use `authservice.jar` as the artifact name so container and pipeline use consistent naming.
 COPY --from=builder /app/dist/authservice.jar authservice.jar
+
+# Override profile with ENV (highest precedence)
+ENV SPRING_PROFILES_ACTIVE=staging
+
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "authservice.jar"]
