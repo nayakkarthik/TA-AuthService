@@ -4,7 +4,7 @@ spring:
 
   application:
     name: authservice
-    tokenExpiryTime: 300000
+    tokenExpiryTime: 300000 #refresh token expiry time
 
 # Postgres configuration
   datasource:
