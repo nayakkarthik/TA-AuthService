@@ -11,6 +11,7 @@ public class UserMapper {
     public UserInfoEntity toEntity(UserInfoDto userInfoDto)
     {
         var userInfoEntity = new UserInfoEntity();
+        userInfoEntity.setUserId(userInfoDto.getUserId());
         userInfoEntity.setEmail(userInfoDto.getEmail());
         userInfoEntity.setPassword(userInfoDto.getPassword());    
         userInfoEntity.setRoles(userInfoDto.getRoles());    
@@ -19,7 +20,7 @@ public class UserMapper {
 
     public UserInfoDto toDto(UserInfoEntity entity)
     {
-        var userInfoDto = new UserInfoDto(entity.getEmail(),entity.getPassword(),entity.getRoles());
+        var userInfoDto = new UserInfoDto(entity.getUserId(),entity.getEmail(),entity.getPassword(),entity.getRoles());
         return userInfoDto;
     }
 }
